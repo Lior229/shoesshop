@@ -9,7 +9,7 @@ const Footer: FC<FooterProps> = () => {
 
     return(
     <footer className={styles.Footer}>
-        <p> All rights Reserved &copy; {year}</p>
+        <p onClick={() => {alert("lior")}}> All rights Reserved &copy; {year}</p>
     </footer>
     );
 }

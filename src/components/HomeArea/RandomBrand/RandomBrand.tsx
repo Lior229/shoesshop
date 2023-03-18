@@ -7,11 +7,11 @@ const RandomBrand: FC<RandomBrandProps> = () => {
 
     const brands = ["adidas","nike","puma","vans", "brand5"];
 
-    let brand = setInterval(() => {
-        const randomIndex = Math.floor(Math.floor(Math.random() * brands.length));
-        console.log(brands[randomIndex]);
+    // let brand = setInterval(() => {
+    //     const randomIndex = Math.floor(Math.floor(Math.random() * brands.length));
+    //     console.log(brands[randomIndex]);
 
-    }, 1000);
+    // }, 1000);
     
     return (
         <div className={`Box ${styles.RandomBrand}`}>
