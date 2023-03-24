@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import styles from './ShoesCard.module.scss';
 
 interface ShoesCardProps {
@@ -9,6 +9,11 @@ interface ShoesCardProps {
  }
 
 const ShoesCard: FC<ShoesCardProps> = ({brand, size, price, image}) => {
+
+    useEffect(()=>{
+        document.title = brand;
+        })
+    
     
     return (
         <div className={`Box ${styles.ShoesCard}`}>
