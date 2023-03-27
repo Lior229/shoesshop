@@ -5,22 +5,29 @@ interface RandomBrandProps { }
 
 const RandomBrand: FC<RandomBrandProps> = () => {
 
-    const [randomBrand, setRandomBrand] = useState("");
+    const [curentBrand, setCurentBrand] = useState("");
+    const [brands, setBrands] = useState(["adidas","nike","puma","vans", "brand5"]);
 
-    const brands = ["adidas","nike","puma","vans", "brand5"];
+    useEffect(()=>{
+        
     const brandIndex = setInterval(() => {
         const randomIndex = Math.floor(Math.floor(Math.random() * brands.length));
-        console.log(randomIndex);
-        setRandomBrand(brands[randomIndex]);
-        }, 2000);
-        
-    useEffect(()=>{
-    clearInterval(brandIndex);
-    },[])
+        setCurentBrand(brands[randomIndex]);
+    }, 5000);
+
+        return () => {
+            clearInterval(brandIndex);
+        }
+    }, [])
+
+    useEffect( () => {
+        console.log('OMG LOOK AT THE N EW BRANDDDD');
+    }, [curentBrand])
     
+
     return (
         <div className={`Box ${styles.RandomBrand}`}>
-            <span>RandomBrand: {randomBrand}</span>
+            <span>RandomBrand: {curentBrand}</span>
         </div>
     )
 }
