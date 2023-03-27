@@ -11,12 +11,12 @@ interface RouterProps {}
 
 const Router: FC<RouterProps> = () => (
   <Routes>
-  <Route path="/" element={<Navigate to="/home" />} />
-  <Route path='/home' element={<Home/>}/>
-  <Route path='/products' element={<Products/>}/>
-  <Route path='/about' element={<About/>}/>
-  <Route path='/story'element={<Story/>} />
-  <Route path='*' element={<PageNotFound/>}/>
+    <Route path="/" element={<Navigate to="/home" />} />
+    <Route path='/home' element={<Home/>}/>
+    <Route path='/products' element={<Products/>}/>
+    <Route path='/about' element={<About/>}/>
+    <Route path='/story'element={<Story/>} />
+    <Route path='*' element={<PageNotFound/>}/>
 </Routes>
 );
 
