@@ -4,7 +4,7 @@ import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import styles from './EmployeeData.module.scss';
 import { BASE_API_URL } from '../../../config';
 import Loader from '../../Loader/Loader';
-import { getEmploye } from '../../../utils/fetchEmployees';
+import { deleteEmploye, getEmploye } from '../../../utils/fetchEmployees';
 
 interface EmployeeDataProps {}
 
@@ -12,6 +12,23 @@ const EmployeeData: FC<EmployeeDataProps> = () => {
   const [employee, setEmployee] = useState<Employee>();
   const [isLoading, setIsLoading] = useState(true);
   const param = useParams();
+  const navigate = useNavigate();
+
+  
+  const handelDeleteEmployee = async () =>  {
+    setIsLoading(true);
+    if(param.employeeId){
+      try {
+        const result = await deleteEmploye(+param.employeeId);
+        setIsLoading(false);
+        navigate('/employees')
+      } catch (err) {
+        console.log(err);
+        setIsLoading(false);
+      }
+    }
+
+  }
 
   useEffect(() => {
 
@@ -30,11 +47,7 @@ const EmployeeData: FC<EmployeeDataProps> = () => {
 
     }
     
-  }, [])
-
-  const handelDeleteEmployee = (id:number)=>void{
-
-  }
+  }, []);
 
   if (isLoading){
     return <Loader/>
@@ -53,9 +66,9 @@ const EmployeeData: FC<EmployeeDataProps> = () => {
           <p>title: {title}</p>
           <p>addres: {city}, {country}</p>
           <p>birthDate: {birthDate}</p>
-          <NavLink to={"/employees"}>Back</NavLink>
-          <NavLink to={"#"}>Edit</NavLink>
-          <NavLink to={"#"} onClick={handelDeleteEmployee(id)}>Delete</NavLink>
+          <NavLink to={"/employees"}> Back | </NavLink>
+          <NavLink to={"#"}>Edit | </NavLink>
+          <NavLink to={"#"} onClick={handelDeleteEmployee}>Delete</NavLink>
         </>
       )
     } 

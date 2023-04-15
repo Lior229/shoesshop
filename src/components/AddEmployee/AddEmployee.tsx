@@ -3,28 +3,29 @@ import { useForm } from "react-hook-form";
 import Employee from '../../models/Employee';
 import { AddEmploye } from '../../utils/fetchEmployees';
 import Loader from '../Loader/Loader';
+ import  { useNavigate  } from 'react-router-dom'
 import styles from './AddEmployee.module.scss';
 
 interface AddEmployeeProps {}
 
 const AddEmployee: FC<AddEmployeeProps> = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<Employee>();
-  const [isLoader, setisLoader] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   const onSubmit = (employee:Employee)=>{
-    setisLoader(true);
+    setIsLoading((prevValue)=> !prevValue);
     console.log("handleSubmit");
     AddEmploye(employee).then((newEmployee)=>{
         console.log(newEmployee);
-        //back to employeeArea
+        navigate('/employees')
     }).catch((err)=>{
       console.log(err);
-    }).finally(()=>{
-      setisLoader(false);
+      setIsLoading(false);
     });
 };
 
-  if (isLoader) {
+  if (isLoading) {
     return <Loader/>
   }
 
@@ -75,7 +76,7 @@ const AddEmployee: FC<AddEmployeeProps> = () => {
       <input type="file"{...register("image")}/>
     </div> */}
 
-    <button type="submit">add</button>
+    <button type="submit" >add</button>
 
     </form>
 
