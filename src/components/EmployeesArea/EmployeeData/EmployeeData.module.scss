@@ -1,0 +1,15 @@
+.EmployeeData {
+    margin-top: 1rem;
+    text-align: center;
+
+    h5{
+        font-size: 16px;
+        text-align: center;
+    }
+
+    &__img{
+        width:150px;
+        height:150px;
+        border: 2px solid black;
+    }
+}

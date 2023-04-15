@@ -1,25 +1,25 @@
 import React, { FC } from 'react';
 import Employee from '../../../../models/Employee';
+import { BASE_API_URL } from "../../../../config";
 import styles from './Employee.module.scss';
+import { NavLink } from 'react-router-dom';
 
-interface EmployeeDataProps {
+interface EmployeeItemProps {
   employee: Employee;
 }
 
-const EmployeeData: FC<EmployeeDataProps> = ({employee}) => {
-  const {id, firstName, lastName, title, country, city, birthDate, imageName} = employee;
-
+const EmployeeItem: FC<EmployeeItemProps> = ({employee}) => {
+  const {id, firstName, lastName, title, imageName} = employee;
+  const imgSrc = `${BASE_API_URL}employees/images/${imageName}`;
+  
   return (
   <li className={`Box ${styles.Employee}`}>
-    <p>id: {id}</p>
-    <p>firstName: {firstName}</p>
-    <p>lastName: {lastName}</p>
-    <p>title: {title}</p>
-    <p>country: {country}</p>
-    <p>city: {city}</p>
-    <p>birthDate: {birthDate}</p>
-    <p>image: {imageName}</p>
+    <NavLink to={`/employees/${id}`} className={styles.Employee__imgContiner}>
+        <img className={styles.Employee__img} src={imgSrc} alt={id.toString()} />
+    </NavLink>
+    <h5>{firstName} {lastName}</h5>
+    <p>{title}</p>
   </li>
 )};
 
-export default EmployeeData;
+export default EmployeeItem;

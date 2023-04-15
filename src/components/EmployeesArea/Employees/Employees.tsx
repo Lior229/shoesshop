@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import Employee from '../../../models/Employee';
-import EmployeeData from './Employee/Employee';
+import { employeeSlice } from '../employeesSlice';
+import EmployeeItem from './Employee/Employee';
 import styles from './Employees.module.scss';
 
 interface EmployeesProps {
@@ -12,7 +13,7 @@ const Employees: FC<EmployeesProps> = ({employess}) => {
   const renderEmployees = () =>{
     return employess.map((employee)=>{
       const {id} = employee;
-      return <EmployeeData key={id} employee={employee}/>
+      return <EmployeeItem key={id} employee={employee}/>
     })
   }
 
