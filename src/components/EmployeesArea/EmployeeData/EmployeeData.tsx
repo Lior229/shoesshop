@@ -5,6 +5,7 @@ import styles from './EmployeeData.module.scss';
 import { BASE_API_URL } from '../../../config';
 import Loader from '../../Loader/Loader';
 import { deleteEmploye, getEmploye } from '../../../utils/fetchEmployees';
+import EmployeeForm from '../../EmployeeForm/EmployeeForm';
 
 interface EmployeeDataProps {}
 
@@ -43,8 +44,6 @@ const EmployeeData: FC<EmployeeDataProps> = () => {
         setIsLoading((prevValue)=> !prevValue);
       })
 
-    }else{
-
     }
     
   }, []);
@@ -67,8 +66,11 @@ const EmployeeData: FC<EmployeeDataProps> = () => {
           <p>addres: {city}, {country}</p>
           <p>birthDate: {birthDate}</p>
           <NavLink to={"/employees"}> Back | </NavLink>
-          <NavLink to={"#"}>Edit | </NavLink>
+          <NavLink to={"/employees/editEmployee"}>Edit | </NavLink>
           <NavLink to={"#"} onClick={handelDeleteEmployee}>Delete</NavLink>
+          <EmployeeForm submitEmployeeHandler={function (employee: Employee): void {
+            throw new Error('Function not implemented.');
+          } } FormTitle={'my '} />
         </>
       )
     } 

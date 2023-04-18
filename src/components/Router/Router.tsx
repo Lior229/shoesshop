@@ -8,7 +8,7 @@ import Products from '../Products/Products';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import EmployeesArea from '../EmployeesArea/EmployeesArea';
 import EmployeeData from '../EmployeesArea/EmployeeData/EmployeeData';
-import AddEmployee from '../AddEmployee/AddEmployee';
+import AddEmployee from '../EmployeesArea/AddEmployee/AddEmployee';
 
 interface RouterProps {}
 

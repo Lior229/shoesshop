@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
 import { useForm } from "react-hook-form";
-import Employee from '../../models/Employee';
-import { AddEmploye } from '../../utils/fetchEmployees';
-import Loader from '../Loader/Loader';
+import Employee from '../../../models/Employee';
+import { AddEmploye } from '../../../utils/fetchEmployees';
+import Loader from '../../Loader/Loader';
  import  { useNavigate  } from 'react-router-dom'
 import styles from './AddEmployee.module.scss';
 
